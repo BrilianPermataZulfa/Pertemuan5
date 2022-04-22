@@ -1,0 +1,56 @@
+#include <iostream>
+using namespace std;
+class biayakuliah {
+	public: 
+    	int jumlahsks(int x);
+    	void inputoutput(); 
+	private:
+  		int sks, total, diskon,tot_diskon, pembayaran;
+  		int jml_matkul, biaya, hasil;
+  		string matkul;
+  		char nim[50], nama[50];
+};  
+void biayakuliah::inputoutput() {
+  	biayakuliah p;
+  	cout << "Masukkan Nama Mahasiswa : ";
+  	cin >> nama;
+  	cout << "Masukkan NIM Mahasiswa : ";
+  	cin >> nim;
+  	cout << "Masukkan jumlah matakuliah yang diambil : ";
+  	cin >> jml_matkul;
+  	
+  	hasil = 1;
+  	hasil = p.jumlahsks(jml_matkul);
+  	total = hasil * 150000;
+  	diskon = total * 25/100;
+  	tot_diskon = total - diskon;
+  
+  	cout<<"\n\nNama Mahasiswa     : "<<nama<<endl;
+    cout<<"NIM                : "<<nim<<endl;
+    cout<<"Jumlah Mata Kuliah : "<<jml_matkul<<endl;
+    cout<<"Jumlah SKS         : "<<hasil<<endl;
+    cout<<"Total Biaya        : "<<total<<endl;
+    cout<<"Diskon 25%         : "<<diskon<<endl;
+    cout<<"Total Biaya setelah diskon : "<<tot_diskon<<endl;
+}
+int biayakuliah::jumlahsks(int x){
+  if (x==0){
+    cout << "Jumlah keseluruhan sks : " << hasil;
+	return hasil;
+  }
+  else{
+    cout << "Masukkan mata kuliah yang diambil : ";
+    cin >> matkul;
+    cout << "Masukkan jumlah SKS yang diambil : ";
+    cin >> sks;
+    hasil=hasil+sks;
+    return jumlahsks(x-1);
+  }
+}
+int main() {
+  int x;
+  biayakuliah p;
+  cout << "MENENTUKAN BIAYA SKS SAAT PANDEMI" << endl;
+  p.inputoutput();
+  return 0;
+}
